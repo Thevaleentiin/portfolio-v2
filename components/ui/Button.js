@@ -1,8 +1,8 @@
-const Button = ({text, color, onClick}) => {
+const Button = ({text, color, onClick, style, type}) => {
 
     return (
         /* text-primary text-secondary --> */
-        <button type="button" className={`text-${color}`} onClick={onClick} >{text}</button>
+        <button type={type} className={`text-${color} ${style}`} onClick={onClick} >{text}</button>
     );
 }
 
