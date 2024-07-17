@@ -9,17 +9,24 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors}) => {
 
     useEffect(() => {
         const handleImageLoad = () => {
-            if (imgRef.current) {
-                console.log(imgRef.current)
-                const imageHeight = imgRef.current.clientHeight;
-                setMaxHeight(`${imageHeight - 250}px`);
-            }
-        };
-    
         if (imgRef.current) {
-            imgRef.current.addEventListener('load', handleImageLoad);
-            return () => imgRef.current.removeEventListener('load', handleImageLoad);
+            console.log(imgRef.current);
+            const imageHeight = imgRef.current.clientHeight;
+            setMaxHeight(`${imageHeight - 250}px`);
         }
+        };
+
+        const imgElement = imgRef.current;
+        
+        if (imgElement) {
+        imgElement.addEventListener('load', handleImageLoad);
+        }
+
+        return () => {
+        if (imgElement) {
+            imgElement.removeEventListener('load', handleImageLoad);
+        }
+        };
     }, [maxHeight]);
     
     const colorsListBubble = colors.map((color, index) => {

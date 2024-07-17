@@ -99,6 +99,8 @@
 // export default BlobCircle;
 
 
+
+
 // "use client";
 // import { motion } from "framer-motion";
 // import { useEffect, useState } from "react";
@@ -293,7 +295,7 @@ const BlobCircle = ({ className, style, gradientId }) => {
             }}
           />
         ) : (
-          <text x="10" y="50" fill="red">Invalid Path</text>
+          <text x="10" y="50">Loading</text>
         )}
       </motion.svg>
     </div>
