@@ -9,23 +9,26 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors}) => {
 
     useEffect(() => {
         const handleImageLoad = () => {
-        if (imgRef.current) {
-            console.log(imgRef.current);
-            const imageHeight = imgRef.current.clientHeight;
-            setMaxHeight(`${imageHeight - 250}px`);
-        }
+            if (imgRef.current) {
+                const imageHeight = imgRef.current.clientHeight;
+                let newMaxHeight = `${imageHeight - 250}px`;
+                if (window.innerWidth < 641) {
+                    newMaxHeight = `${imageHeight - 200}px`;
+                }
+                setMaxHeight(newMaxHeight);
+            }
         };
 
         const imgElement = imgRef.current;
-        
+
         if (imgElement) {
-        imgElement.addEventListener('load', handleImageLoad);
+            imgElement.addEventListener('load', handleImageLoad);
         }
 
         return () => {
-        if (imgElement) {
-            imgElement.removeEventListener('load', handleImageLoad);
-        }
+            if (imgElement) {
+                imgElement.removeEventListener('load', handleImageLoad);
+            }
         };
     }, [maxHeight]);
     
@@ -48,7 +51,7 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors}) => {
             {/* Section 1 */}
             <div className="w-full bg-whiteprimary pb-0">
                 <div className="container h-auto" style={{ maxHeight: maxHeight }} >
-                    <Image src={imgAbout} className="w-4/5 -translate-y-28 mx-auto h-auto" alt="" ref={imgRef} width={774} height={606} />
+                    <Image src={imgAbout} className="w-4/5 -translate-y-24 sm:-translate-y-28 mx-auto h-auto" alt="" ref={imgRef} width={774} height={606} />
                 </div>
             </div>
             {/* Section 2 */}
@@ -68,7 +71,7 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors}) => {
                         </div>
                         <div className="mt-16">
                             <h2 className="font-rubik text-lg sm:text-xl md:text-2xl lg:text-2xl font-extrabold mb-6">Couleurs utilisées</h2>
-                            <ul className="flex flex-row justify-start items-center gap-3 xxs:gap-5 xs:gap-8 sm:gap-10">
+                            <ul className="flex flex-row justify-start items-center flex-wrap gap-3 xxs:gap-5 xs:gap-8 sm:gap-10">
                                 {colorsListBubble}
                             </ul>
                         </div>
@@ -78,7 +81,7 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors}) => {
             {/* Section 3 */}
             <div className="w-full bg-whiteprimary">
                 <div className="container">
-                    <Image src={imgAbout2} className="w-4/5 -translate-y-28 mx-auto h-auto" alt="" width={774} height={606} />
+                    <Image src={imgAbout2} className="w-4/5 -translate-y-24 sm:-translate-y-28 mx-auto h-auto" alt="" width={774} height={606} />
                 </div>
             </div>
         </div>

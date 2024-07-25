@@ -8,7 +8,7 @@ const About = () => {
             <div className="absolute -bottom-8/12 -right-1/6 w-1000 h-1000 rotate-90 bg-gradient-to-r from-redprimary from-0% via-redprimary/70 via-65% to-whiteprimary/75 to-100% rounded-full circle"></div>
             <div className="absolute -bottom-3/12 -right-4/12 w-750 h-750 -rotate-45 bg-gradient-to-r from-redprimary from-0% via-redprimary/70 via-65% to-whiteprimary/75 to-100% rounded-full circle"></div>
             <div className="absolute -top-1/12 -left-7% w-64 h-64 bg-gradient-to-b -rotate-180 from-blackprimary from-0% via-blackprimary/50 via-60% to-blackprimary/45 to-100% rounded-full circle"></div> */}
-            <div className="container pt-44 pb-44">
+            <div className="container pt-44 pb-44 5xl:px-48">
                 <h1 className="uppercase text-redprimary text-6xl lg:text-7xl font-raleway font-extrabold">à Propos</h1>
                 <div className="font-shanti w-10/12  xs:w-9/12 md:w-7/12 lg:w-7/12 mx-auto mt-14 leading-relaxed tracking-wide">
                     <span className="text-redprimary font-rubik font-extrabold">Salut,</span>je suis Valentin, un <span className="text-blueprimary font-rubik font-bold">explorateur numérique passionné</span> basé à Paris. Diplômé de l'IIM Digital School, mon voyage dans le monde du développement Front-End a commencé au lycée et s'est enrichi à travers diverses expériences professionnelles, 

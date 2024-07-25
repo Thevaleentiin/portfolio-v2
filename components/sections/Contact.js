@@ -38,11 +38,11 @@ const Contact = () => {
     return (
         <div id="say-hi" className="w-full bg-white relative overflow-hidden">
             <BlobCircle gradientId="grad1" className="absolute -bottom-6/12 z-40 -left-7% w-1000 h-1000 rotate-90" />
-            <BlobCircle gradientId="grad2" className="absolute -bottom-7/12 z-40 left-4/12 w-1000 h-1000 rotate-90" />
-            <BlobCircle gradientId="grad2" className="absolute -bottom-4/12 z-30 -right-4/12 w-1000 h-1000 rotate-90" />
-            <BlobCircle gradientId="grad2" className="absolute -bottom-5/12 z-40 -right-3/12 w-750 h-750" />
-            <BlobCircle gradientId="grad5" className="absolute -bottom-1/12 z-30 -left-2/12 w-500 h-500 rotate-[145deg]" />
-            <BlobCircle gradientId="grad2" className="absolute -bottom-6/12 z-20 left-1/12 w-1200 h-1200 rotate-90" />
+            <BlobCircle gradientId="grad2" className="absolute -bottom-7/12 z-40 left-4/12 3xl:-bottom-12/24 6xl:-bottom-18/24 5xl:left-9/24 w-1000 h-1000 4xl:w-1200 4xl:h-1200 6xl:w-[1400px] 6xl:h-[1400px] rotate-90" />
+            <BlobCircle gradientId="grad2" className="absolute -bottom-4/12 z-30 -right-4/12 3xl:-bottom-7/24 5xl:-right-7/24 w-1000 h-1000 5xl:w-1200 5xl:h-1200 6xl:w-[1400px] 6xl:h-[1400px] rotate-90" />
+            <BlobCircle gradientId="grad2" className="absolute -bottom-5/12 z-40 -right-3/12 3xl:-right-5/24 3xl:-bottom-9/24 5xl:-bottom-7/24 6xl:-bottom-8/24 6xl:-right-2/24 w-750 h-750" />
+            <BlobCircle gradientId="grad5" className="absolute -bottom-1/12 z-30 -left-2/12 5xl:-left-3/24 w-500 h-500 rotate-[145deg]" />
+            <BlobCircle gradientId="grad2" className="absolute -bottom-6/12 z-20 left-1/12 w-1200 h-1200 6xl:w-[1400px] 6xl:h-[1400px] rotate-90" />
             <div className="container text-center pt-44 pb-750">
                 <h2 className="font-rubik font-bold text-xl md:text-2xl leading-loose">
                     Écrivez-moi,<br /> et explorons ensemble votre projet. <span>✏️</span>

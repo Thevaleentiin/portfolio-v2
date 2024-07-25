@@ -9,6 +9,12 @@ module.exports = {
     './app/**/*.{js,jsx}',
     './src/**/*.{js,jsx}',
   ],
+  safelist: [
+    'text-redprimary',
+    'text-whiteprimary',
+    'text-blackprimary',
+    'text-blueprimary',
+  ],
   prefix: "",
   theme: {
     container: {
@@ -60,6 +66,12 @@ module.exports = {
         'xs': '480px',
         'xxs': '380px',
         'xsmall': '325px',
+        '2-5xl': '1340px',
+        '3xl': '1700px',
+        '4xl': '1920px',
+        '5xl': '2200px',
+        '6xl': '2560px',
+        '7xl': '3000px',
       },
       fontFamily: {
         inter: ['var(--font-inter)', 'sans-serif'],
@@ -82,6 +94,7 @@ module.exports = {
       spacing: {
         '1000': '62.5rem',
         '1200': '75rem',
+        '1300': '81.25rem',
         '1500': '93.75rem',
         '750': '46.875rem',
         '950': '59.375rem',
@@ -92,10 +105,17 @@ module.exports = {
         '7%': '7%',
         '30': '30%',
         '9%': '9%',
+        '10%': '10%',
+        '11%': '11%',
+        '12%': '12%',
         '14%': '14%',
         '15%': '15%',
         '29%': '29%',
         '26%': '26%',
+        '1/5': '20%',
+        '2/5': '40%',
+        '3/5': '60%',
+        '4/5': '80%',
         // Fractions de 1/6 à 6/6
         '1/6': '16.666667%',
         '2/6': '33.333333%',

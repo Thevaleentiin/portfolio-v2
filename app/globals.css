@@ -1,6 +1,6 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
   @layer base {
     :root {
@@ -83,4 +83,135 @@
 }
 html {
   scroll-behavior: smooth;
+}
+
+
+/* style pour button blob */
+@layer components {
+  .filter-ggoo {
+    filter: url('#goo');
+  }
+
+  .blob-btn__inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .blob-btn__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#goo');
+  }
+
+  .blob-btn__blob {
+    position: absolute;
+    top: 2px; /* Adjusted to match the CSS variable $borderW */
+    width: 25%; /* 100% / 4 */
+    height: 100%;
+    border-radius: 100%;
+    transform: translate3d(0, 150%, 0) scale(1.4);
+    transition: transform 0.45s;
+  }
+
+  .blob-btn__blob:nth-child(1) {
+    left: 0;
+    transition-delay: 0s;
+  }
+
+  .blob-btn__blob:nth-child(2) {
+    left: 25%;
+    transition-delay: 0.08s;
+  }
+
+  .blob-btn__blob:nth-child(3) {
+    left: 50%;
+    transition-delay: 0.16s;
+  }
+
+  .blob-btn__blob:nth-child(4) {
+    left: 75%;
+    transition-delay: 0.24s;
+  }
+
+  .blob-btn:hover .blob-btn__blob {
+    transform: translate3d(0, 0, 0) scale(1.4);
+  }
+
+  .blob-btn {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+  }
+
+  .blob-btn:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+  }
+
+  .blob-btn:after {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s 0.2s;
+    border-radius: 30px;
+  }
+
+  .blob-btn:hover {
+    border-radius: 30px;
+  }
+
+  .blob-btn:hover:after {
+    transition: all 0.3s;
+    left: 0;
+    top: 0;
+    border-radius: 30px;
+  }
+
+  /* Dynamic border colors */
+  .before\\:border-blueprimary:before {
+    border-color: var(--color-blueprimary);
+  }
+
+  .before\\:border-redprimary:before {
+    border-color: var(--color-redprimary);
+  }
+
+  .before\\:border-whiteprimary:before {
+    border-color: var(--color-whiteprimary);
+  }
+
+  .before\\:border-yellowprimary:before {
+    border-color: var(--color-yellowprimary);
+  }
+
+  .before\\:border-greenprimary:before {
+    border-color: var(--color-greenprimary);
+  }
+
+  /* Ensure hoverTextColor has priority */
+  button.blob-btn .text-blackprimary {
+    color: var(--color-blackprimary);
+  }
+
 }
