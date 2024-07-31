@@ -40,7 +40,7 @@ const ProjectDetails = () => {
         <div className="w-full bg-whiteprimary pb-96 relative overflow-hidden">
             <ProjetHero title={project.title} hrefWebsite={project.website} imgHero={project.imageHero} idProject={project.id} />
             <ProjectDescription imgNames={imageNames} role={project.role} contexte={project.contexte} annee={project.annee} stackLogo={project.stackLogo} stackLogo2={project.stackLogo2} stackLogo3={project.stackLogo3} description={project.description} />
-            <ProjectAbout imgAbout={project.imgAbout} fontTitle={project.fontTitle} fontText={project.fontText} imgAbout2={project.imgAbout2} colors={project.colors} />
+            <ProjectAbout imgAbout={project.imgAbout} fontTitle={project.fontTitle} fontText={project.fontText} imgAbout2={project.imgAbout2} idProject={project.id} colors={project.colors} />
             {/* <img src={project.image} alt={project.title} className="w-full mb-4" /> */}
             {/* <p className="mb-4">{project.description}</p> */}
             <div className="flex flex-col xs:flex-row gap-8 mt-10 mb-96 justify-center items-center xs:items-start">

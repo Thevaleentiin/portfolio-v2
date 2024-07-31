@@ -3,8 +3,14 @@
 import { useState } from 'react';
 import Button from "../ui/Button";
 import BlobCircle from "../BlobCircle";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Contact = () => {
+
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
@@ -43,7 +49,7 @@ const Contact = () => {
             <BlobCircle gradientId="grad2" className="absolute -bottom-5/12 z-40 -right-3/12 3xl:-right-5/24 3xl:-bottom-9/24 5xl:-bottom-7/24 6xl:-bottom-8/24 6xl:-right-2/24 w-750 h-750" />
             <BlobCircle gradientId="grad5" className="absolute -bottom-1/12 z-30 -left-2/12 5xl:-left-3/24 w-500 h-500 rotate-[145deg]" />
             <BlobCircle gradientId="grad2" className="absolute -bottom-6/12 z-20 left-1/12 w-1200 h-1200 6xl:w-[1400px] 6xl:h-[1400px] rotate-90" />
-            <div className="container text-center pt-44 pb-750">
+            <motion.div ref={ref} initial={{ opacity: 0, y: -100 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 1 }} className="container text-center pt-44 pb-750">
                 <h2 className="font-rubik font-bold text-xl md:text-2xl leading-loose">
                     Écrivez-moi,<br /> et explorons ensemble votre projet. <span>✏️</span>
                 </h2>
@@ -93,7 +99,7 @@ const Contact = () => {
                     {status}
                     </p>
                 )}
-            </div>
+            </motion.div>
         </div>
     );
 };

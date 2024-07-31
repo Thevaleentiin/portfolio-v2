@@ -84,6 +84,22 @@
 html {
   scroll-behavior: smooth;
 }
+/*width*/
+::-webkit-scrollbar {
+  width:8px;
+}
+/*track*/
+::-webkit-scrollbar-track {
+  background:rgb(244, 247, 245);
+}
+/*thumb*/
+::-webkit-scrollbar-thumb {
+  background:rgb(34, 116, 165);
+}
+/*thumb pressed*/
+::-webkit-scrollbar-thumb:active {
+  background: #1e6894;
+}
 
 
 /* style pour button blob */

@@ -1,11 +1,15 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 
-const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors}) => {
+const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors, idProject}) => {
 
     const imgRef = useRef(null);
     const [maxHeight, setMaxHeight] = useState('auto');
+
+    const animRef = useRef(null);
+    const isInView = useInView(animRef, { once: true });
 
     useEffect(() => {
         const handleImageLoad = () => {
@@ -51,13 +55,13 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors}) => {
             {/* Section 1 */}
             <div className="w-full bg-whiteprimary pb-0">
                 <div className="container h-auto" style={{ maxHeight: maxHeight }} >
-                    <Image src={imgAbout} className="w-4/5 -translate-y-24 sm:-translate-y-28 mx-auto h-auto" alt="" ref={imgRef} width={774} height={606} />
+                    <Image src={imgAbout} className="w-4/5 -translate-y-24 sm:-translate-y-28 mx-auto h-auto" alt="" quality={100} ref={imgRef} width={2560} height={idProject === 1 ? 1535 : 2363} />
                 </div>
             </div>
             {/* Section 2 */}
             <div className="w-full bg-blacksecondary text-whiteprimary pt-56 pb-56">
                 <div className="container">
-                    <div className="w-20/24 xxs:w-18/24 sm:w-3/5 mx-auto">
+                    <motion.div ref={animRef} initial={{opacity: 0, y: -100}} animate={isInView ? { opacity: 1, y: 0} : {}} transition={{ duration: 0.5 }} className="w-20/24 xxs:w-18/24 sm:w-3/5 mx-auto">
                         <h2 className="font-rubik text-lg sm:text-xl md:text-2xl lg:text-2xl font-extrabold">Typographie</h2>
                         <div className="flex flex-col justify-start items-center">
                             <div className="w-full">
@@ -75,13 +79,13 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors}) => {
                                 {colorsListBubble}
                             </ul>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
             {/* Section 3 */}
             <div className="w-full bg-whiteprimary">
                 <div className="container">
-                    <Image src={imgAbout2} className="w-4/5 -translate-y-24 sm:-translate-y-28 mx-auto h-auto" alt="" width={774} height={606} />
+                    <Image src={imgAbout2} className="w-4/5 -translate-y-24 sm:-translate-y-28 mx-auto h-auto" alt="" quality={100} width={2560} height={idProject === 1 ? 1591 : 2880} />
                 </div>
             </div>
         </div>

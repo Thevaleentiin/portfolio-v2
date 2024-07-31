@@ -1,5 +1,7 @@
+"use client";
 import ScrollBtn from "../ui/ScrollBtn";
 import BlobCircle from "../BlobCircle";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
     return (
@@ -10,7 +12,12 @@ const HeroSection = () => {
             <BlobCircle gradientId="grad2" className="absolute -top-18/24 xxs:-top-6/12 -right-21/24 xs:-top-6/12 xs:-right-7/12 sm:-top-4/12 sm:-right-7/12  md:-top-3/12 md:-right-6/12 lg:-top-3/12 lg:-right-2/12 -z-30  w-750 h-750 md:w-750 md:h-750 lg:w-1000 lg:h-1000 5xl:w-1200 5xl:h-1200 hidden xxs:block rotate-45" />
             <BlobCircle gradientId="grad2" className="absolute -bottom-1/12 hidden lg:block -right-30 4xl:-right-5/24 z-0 w-750 h-750 5xl:w-950 5xl:h-950 rotate-45" />
             <div className="flex flex-col z-50">
-                <h1 className="uppercase font-raleway font-extrabold flex flex-col justify-start">
+                <motion.h1
+                    className="uppercase font-raleway font-extrabold flex flex-col justify-start"
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
+                >
                     <div className="text-redprimary text-base sm:text-base md:text-xl lg:text-4xl flex flex-row justify-evenly items-center">
                         <div className="basis-9/12 sm:basis-9/12 md:basis-8/12 lg:basis-7/12">Hello je m'appelle</div>
                         <div className="basis-3/12 sm:basis-3/12 md:basis-4/12 lg:basis-5/12 h-1 w-full bg-blueprimary relative flex items-center">
@@ -18,8 +25,8 @@ const HeroSection = () => {
                         </div>
                     </div>
                     <p className="text-blackprimary text-5xl sm:text-5xl md:text-7xl lg:text-9xl">Valentin</p>
-                </h1>
-                <p className="uppercase self-end font-extrabold sm:text-lg md:text-xl lg:text-2xl">Développeur<span className="text-blueprimary font-extrabold block">Front-End</span></p>
+                    <p className="uppercase self-end font-extrabold sm:text-lg md:text-xl lg:text-2xl">Développeur<span className="text-blueprimary font-extrabold block">Front-End</span></p>
+                </motion.h1>
             </div>
             <ScrollBtn />
         </div>
