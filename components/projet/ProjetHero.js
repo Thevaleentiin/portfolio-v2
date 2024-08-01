@@ -32,7 +32,7 @@ const ProjetHero = ({title, imgHero, idProject, hrefWebsite}) => {
                         </CustomLink>
                     </div>
                 </motion.div>
-                <motion.div ref={ref} initial={{opacity: 0, y: -100}} animate={isInView ? { opacity: 1, y: 0} : {}} transition={{ duration: 0.5, delay: 0.1 }} className="relative basis-full lg:basis-3/5 w-full h-full z-10 px-5 xs:px-0">
+                <motion.div ref={ref} initial={{opacity: 0, y: -100}} animate={isInView ? { opacity: 1, y: 0} : {}} transition={{ duration: 0.5, delay: 0.1 }} className="relative basis-full lg:basis-3/5 w-full h-full 3xl:h-[80%] z-10 px-5 xs:px-0">
                     <Image src={imgHero} className="w-full h-full object-contain" alt="" fill={true} quality={100} />
                 </motion.div>
             </div>

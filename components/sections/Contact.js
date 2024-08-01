@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from 'react';
-import Button from "../ui/Button";
 import BlobCircle from "../BlobCircle";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import CustomButton from '../ui/CustomButton';
 
 const Contact = () => {
 
@@ -90,7 +90,16 @@ const Contact = () => {
                         onChange={(e) => setMessage(e.target.value)}
                         required
                     ></textarea>
-                    <Button text="Envoyer" color="blackprimary" type="submit" style="box-border block border border-blackprimary rounded px-8 mt-2 py-2" />
+                    <CustomButton type="submit"
+                        bgWaveColor="bg-blackprimary"
+                        textColor="text-blackprimary"
+                        borderColor="before:border-blackprimary"
+                        BgColor="bg-transparent"
+                        hoverTextColor="text-whiteprimary"
+                        className="box-border border px-8 rounded-xl mt-2 py-2">
+                        Envoyer
+                    </CustomButton>
+                    {/* <Button text="Envoyer" color="blackprimary" type="submit" style="box-border block border border-blackprimary rounded px-8 mt-2 py-2" /> */}
                 </form>
                 {status && (
                     <p className={`mt-4 p-4 rounded-lg inline-block shadow text-center border ${

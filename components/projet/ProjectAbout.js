@@ -16,10 +16,28 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors, idProje
             if (imgRef.current) {
                 const imageHeight = imgRef.current.clientHeight;
                 let newMaxHeight = `${imageHeight - 250}px`;
+                if (window.innerWidth < 1025) {
+                    console.log('width: < 641')
+                    newMaxHeight = `${imageHeight - 180}px`;
+                    console.log('641: ' + newMaxHeight)
+                } 
+                if (window.innerWidth < 769) {
+                    console.log('width: < 641')
+                    newMaxHeight = `${imageHeight - 170}px`;
+                    console.log('641: ' + newMaxHeight)
+                } 
                 if (window.innerWidth < 641) {
-                    newMaxHeight = `${imageHeight - 200}px`;
+                    console.log('width: < 641')
+                    newMaxHeight = `${imageHeight - 150}px`;
+                    console.log('641: ' + newMaxHeight)
+                } 
+                if (window.innerWidth < 481) {
+                    console.log('width: < 480')
+                    newMaxHeight = `${imageHeight - 100}px`;
+                    console.log('480: ' + newMaxHeight)
                 }
                 setMaxHeight(newMaxHeight);
+                console.log('maxHeight Final:' + newMaxHeight + 'taille de l\'image: ' + imageHeight)
             }
         };
 
@@ -55,7 +73,7 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors, idProje
             {/* Section 1 */}
             <div className="w-full bg-whiteprimary pb-0">
                 <div className="container h-auto" style={{ maxHeight: maxHeight }} >
-                    <Image src={imgAbout} className="w-4/5 -translate-y-24 sm:-translate-y-28 mx-auto h-auto" alt="" quality={100} ref={imgRef} width={2560} height={idProject === 1 ? 1535 : 2363} />
+                    <Image src={imgAbout} className="w-4/5 -translate-y-12 xs:-translate-y-14 sm:-translate-y-[4rem] md:-translate-y-[4rem] lg:-translate-y-28 mx-auto h-auto" alt="" quality={100} ref={imgRef} width={2560} height={idProject === 1 ? 1535 : 2363} />
                 </div>
             </div>
             {/* Section 2 */}
@@ -85,7 +103,7 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors, idProje
             {/* Section 3 */}
             <div className="w-full bg-whiteprimary">
                 <div className="container">
-                    <Image src={imgAbout2} className="w-4/5 -translate-y-24 sm:-translate-y-28 mx-auto h-auto" alt="" quality={100} width={2560} height={idProject === 1 ? 1591 : 2880} />
+                    <Image src={imgAbout2} className="w-4/5 -translate-y-12 xs:-translate-y-14 sm:-translate-y-[4rem] md:-translate-y-[4rem] lg:-translate-y-28 mx-auto h-auto" alt="" quality={100} width={2560} height={idProject === 1 ? 1591 : 2880} />
                 </div>
             </div>
         </div>
