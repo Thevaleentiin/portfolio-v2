@@ -3,6 +3,7 @@ import { Inter, Raleway, Shanti, Rubik, Changa_One, Assistant, Cantarell, Montse
 import "./globals.css";
 import Navbar from "@component/components/layout/Navbar";
 import Footer from "@component/components/layout/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ['latin'] });
 const raleway = Raleway({ subsets: ['latin'], variable: '--font-raleway' });
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           {children}
           <Footer />
+          <SpeedInsights />
           <div style={{ width: 0, height: 0, overflow: 'hidden' }}>
             <svg width="0" height="0">
               <defs>
