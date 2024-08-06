@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <div className="flex flex-col sm:flex-row mt-5 sm:mt-0 items-center justify-center sm:justify-between bg-white min-h-20">
+        <div id="footerPage" className="flex flex-col sm:flex-row mt-5 sm:mt-0 items-center justify-center sm:justify-between bg-white min-h-20">
             <div className="flex flex-col sm:flex-row justify-start items-center gap-y-4 sm:gap-y-0 sm:gap-3 sm:ml-6 basis-1/3">
                 <Image src="/images/logo_pt.svg" className="w-8" alt="Logo" width={51} height={70} />
                 <p className="font-raleway">Valentin Kahn-Barberon</p>

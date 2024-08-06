@@ -16,10 +16,22 @@ const Contact = () => {
     const [phone, setPhone] = useState("");
     const [message, setMessage] = useState("");
     const [status, setStatus] = useState("");
+    const [errors, setErrors] = useState({});
     
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus("Sending...");
+
+        const newErrors = {};
+        if (!name) newErrors.name = "Le nom est requis.";
+        if (!email) newErrors.email = "L'email est requis.";
+        if (!message) newErrors.message = "Le message est requis.";
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            setStatus("Error: Veuillez corriger les erreurs ci-dessous.");
+            return;
+        }
         
         const res = await fetch("/api/contact", {
             method: "POST",
@@ -33,7 +45,7 @@ const Contact = () => {
         if (result.error) {
             setStatus(`Error: ${result.error}`);
         } else {
-            setStatus("Message sent successfully!");
+            setStatus("Message envoyé!");
             setName("");
             setEmail("");
             setPhone("");
@@ -53,43 +65,75 @@ const Contact = () => {
                 <h2 className="font-rubik font-bold text-xl md:text-2xl leading-loose">
                     Écrivez-moi,<br /> et explorons ensemble votre projet. <span>✏️</span>
                 </h2>
-                <form onSubmit={handleSubmit} className="w-full md:w-1/2 mx-auto mt-12">
+                <form onSubmit={handleSubmit} className="w-full md:w-1/2 mx-auto mt-12" aria-labelledby="contact-form-title">
+                    <h2 id="contact-form-title" className="sr-only">Formulaire de contact</h2>
+                    
+                    <label htmlFor="name" className="sr-only">Nom</label>
                     <input
                         type="text"
+                        id="name"
                         className="w-full box-border border border-blackprimary rounded min-h-11 placeholder:text-blackprimary pl-4 shadow-lg"
                         placeholder="Nom"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
+                        aria-required="true"
+                        aria-describedby={errors.name ? "name-error" : null}
                     />
+                    {errors.name && (
+                        <span id="name-error" className="text-red-600">
+                            {errors.name}
+                        </span>
+                    )}
                     <div className="flex flex-col md:flex-row md:justify-around items-start md:items-center md:gap-5 lg:gap-10 md:shrink mt-4">
-                    <input
-                        type="email"
-                        className="basis-full md:basis-1/2 w-full md:w-1/2 box-border border border-blackprimary rounded min-h-11 placeholder:text-blackprimary pl-4 shadow-lg"
-                        placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="phone"
-                        className="mt-4 md:mt-0 basis-full md:basis-1/2 w-full md:w-1/2 box-border border border-blackprimary rounded min-h-11 placeholder:text-blackprimary pl-4 shadow-lg"
-                        placeholder="Téléphone"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                    />
+                        <label htmlFor="email" className="sr-only">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            className="basis-full md:basis-1/2 w-full md:w-1/2 box-border border border-blackprimary rounded min-h-11 placeholder:text-blackprimary pl-4 shadow-lg"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            aria-required="true"
+                            aria-describedby={errors.email ? "email-error" : null}
+                        />
+                        {errors.email && (
+                            <span id="email-error" className="text-red-600">
+                                {errors.email}
+                            </span>
+                        )}
+                        <label htmlFor="phone" className="sr-only">Téléphone</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            className="mt-4 md:mt-0 basis-full md:basis-1/2 w-full md:w-1/2 box-border border border-blackprimary rounded min-h-11 placeholder:text-blackprimary pl-4 shadow-lg"
+                            placeholder="Téléphone"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            aria-required="false"
+                        />
                     </div>
+                    
+                    <label htmlFor="message" className="sr-only">Message</label>
                     <textarea
                         name="message"
+                        id="message"
                         rows="8"
                         cols="2"
                         className="w-full box-border border border-blackprimary rounded min-h-11 mt-4 placeholder:text-blackprimary pl-4 pt-3 shadow-lg"
-                        id="message"
                         placeholder="Message"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         required
+                        aria-required="true"
+                        aria-describedby={errors.message ? "message-error" : null}
                     ></textarea>
+                    {errors.message && (
+                        <span id="message-error" className="text-red-600">
+                            {errors.message}
+                        </span>
+                    )}
                     <CustomButton type="submit"
                         bgWaveColor="bg-blackprimary"
                         textColor="text-blackprimary"
@@ -99,7 +143,6 @@ const Contact = () => {
                         className="box-border border px-8 rounded-xl mt-2 py-2">
                         Envoyer
                     </CustomButton>
-                    {/* <Button text="Envoyer" color="blackprimary" type="submit" style="box-border block border border-blackprimary rounded px-8 mt-2 py-2" /> */}
                 </form>
                 {status && (
                     <p className={`mt-4 p-4 rounded-lg inline-block shadow text-center border ${

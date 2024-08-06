@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@component/components/layout/Navbar";
 import Footer from "@component/components/layout/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import AccessibleMenu from '@component/components/accessibility/AccessibleMenu';
 
 const inter = Inter({ subsets: ['latin'] });
 const raleway = Raleway({ subsets: ['latin'], variable: '--font-raleway' });
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
     <html lang="fr">
       <body className={`${inter.variable} ${raleway.variable} ${shanti.variable} ${rubik.variable} ${assistant.variable} ${cantarell.variable} ${montserrat.variable} ${Changa_one.variable} bg-white`}>
         <main>
+          <AccessibleMenu />
           <Navbar />
           {children}
           <Footer />
