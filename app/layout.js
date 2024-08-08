@@ -23,8 +23,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body className={`${inter.variable} ${raleway.variable} ${shanti.variable} ${rubik.variable} ${assistant.variable} ${cantarell.variable} ${montserrat.variable} ${Changa_one.variable} bg-white`}>
-        <main>
+      <body className={`${inter.variable} ${raleway.variable} ${shanti.variable} ${rubik.variable} ${assistant.variable} ${cantarell.variable} ${montserrat.variable} ${Changa_one.variable} bg-white w-full`}>
+        <main className='w-full'>
           <AccessibleMenu />
           <Navbar />
           {children}

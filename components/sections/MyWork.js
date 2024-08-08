@@ -15,7 +15,7 @@ const MyWork = () => {
     return (
         <div id="realisations" className="w-full bg-redprimary text-white overflow-hidden">
             <div className="container pt-56 pb-64 lg:pb-80 xl:pb-96 5xl:px-48 5xl:pb-96 7xl:pb-[700px]">
-                <h1 className="uppercase text-6xl lg:text-7xl font-raleway font-bold">Mon Travail</h1>
+                <h1 className="uppercase text-6xl lg:text-7xl font-raleway font-bold">Projets</h1>
                 <div className="grid grid-cols-1 lg:grid-cols-12 mt-56 gap-8 xl:gap-9">
                     <div className="flex flex-col z-10 items-center justify-center col-span-1 lg:col-span-7 mb-20 lg:mb-0 relative">
                         <Image src="/images/evalujeu_sample_img.png" className="h-auto md:w-5/6 object-contain" alt="capture d'écran - evalujeu" quality={100} width={2560} height={1394} />
