@@ -88,6 +88,8 @@ html {
 }
 body {
   padding: env(safe-area-inset);
+  width: 100vw;
+  max-width: none;
 }
 /*width*/
 ::-webkit-scrollbar {
