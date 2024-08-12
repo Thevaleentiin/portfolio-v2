@@ -87,8 +87,8 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  padding-right: 0;
-  padding-left:0;
+  padding-left: calc(env(safe-area-inset-left) - 48px);
+  padding-right: calc(env(safe-area-inset-right) - 48px);
 }
 /*width*/
 ::-webkit-scrollbar {
