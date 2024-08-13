@@ -86,14 +86,12 @@
 html {
   scroll-behavior: smooth;
 }
-@supports (-webkit-overflow-scrolling: touch) {
-  body {
-      /* Styles spécifiques pour Chrome sur iOS */
-      padding-left: 0;
-      width: 100vw;
-      padding-right: 0;
-  }
+body {
+    padding-left: 0;
+    width: 100vw;
+    padding-right: 0;
 }
+
 /* body {
   padding: env(safe-area-inset);
 
