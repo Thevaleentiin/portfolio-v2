@@ -86,11 +86,6 @@
 html {
   scroll-behavior: smooth;
 }
-body {
-    padding-left: 0;
-    width: 100vw;
-    padding-right: 0;
-}
 
 /* body {
   padding: env(safe-area-inset);
