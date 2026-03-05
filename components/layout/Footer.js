@@ -14,11 +14,6 @@ const Footer = () => {
             </div>
             <div className="sm:mr-6 mb-7 sm:mb-0 basis-full sm:basis-1/3">
                 <ul className="flex flex-row justify-end gap-3">
-                    <li className="">
-                        <Link href="https://www.codeur.com/-valentinkahn" target="_blank" rel="noopener noreferrer">
-                            <Image src="/images/codeur-logo.png" className="w-8" alt="codeur logo" width={32} height={32} />
-                        </Link>
-                    </li>
                     <li>
                         <Link href="https://github.com/Thevaleentiin" target="_blank" rel="noopener noreferrer">
                             <Image src="/images/github-logo.png" className="w-8" alt="github logo" width={32} height={32} />

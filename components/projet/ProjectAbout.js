@@ -3,6 +3,22 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
+// Mapping des noms de police (venant de `projects.js`) vers les classes Tailwind
+const TITLE_FONT_CLASSES = {
+    "changa-one": "font-changa_one",
+    "cantarell": "font-cantarell",
+    "montserrat": "font-montserrat",
+    "josefin-sans": "font-josefin-sans",
+};
+
+const TEXT_FONT_CLASSES = {
+    "assistant": "font-assistant",
+    "montserrat": "font-montserrat",
+    "raleway": "font-raleway",
+    "open-sans": "font-open-sans",
+    "inter": "font-inter",
+};
+
 const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors, idProject}) => {
 
     const imgRef = useRef(null);
@@ -83,12 +99,28 @@ const ProjectAbout = ({imgAbout, fontTitle, fontText, imgAbout2, colors, idProje
                         <h2 className="font-rubik text-lg sm:text-xl md:text-2xl lg:text-2xl font-extrabold">Typographie</h2>
                         <div className="flex flex-col justify-start items-center">
                             <div className="w-full">
-                                <p className={`text-lg pt-6 capitalize ${fontTitle === 'changa-one' ? 'font-changa_one' : 'font-cantarell'}`}>{fontTitle} - Titre</p>
-                                <p className={`text-4xl font-bold ${fontTitle === 'changa-one' ? 'font-changa_one' : 'font-cantarell'} `} >The quick brown fox jumps over the lazy dog</p>
+                                <p
+                                    className={`text-lg pt-6 capitalize ${TITLE_FONT_CLASSES[fontTitle] || "font-montserrat"}`}
+                                >
+                                    {fontTitle} - Titre
+                                </p>
+                                <p
+                                    className={`text-4xl font-bold ${TITLE_FONT_CLASSES[fontTitle] || "font-montserrat"}`}
+                                >
+                                    The quick brown fox jumps over the lazy dog
+                                </p>
                             </div>
                             <div className="w-full">
-                                <p className={`text-lg capitalize ${fontText === 'assistant' ? 'font-assistant' : 'font-montserrat'}`}>{fontText} - Texte</p>
-                                <p className={`text-4xl ${fontText === 'assistant' ? 'font-assistant' : 'font-montserrat'}`}>The quick brown fox jumps over the lazy dog</p>
+                                <p
+                                    className={`text-lg capitalize ${TEXT_FONT_CLASSES[fontText] || "font-montserrat"}`}
+                                >
+                                    {fontText} - Texte
+                                </p>
+                                <p
+                                    className={`text-4xl ${TEXT_FONT_CLASSES[fontText] || "font-montserrat"}`}
+                                >
+                                    The quick brown fox jumps over the lazy dog
+                                </p>
                             </div>
                         </div>
                         <div className="mt-16">
