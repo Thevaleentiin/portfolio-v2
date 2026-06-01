@@ -6,7 +6,7 @@ import Footer from "@component/components/layout/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import AccessibleMenu from '@component/components/accessibility/AccessibleMenu';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const raleway = Raleway({ subsets: ['latin'], variable: '--font-raleway' });
 const shanti = Shanti({ subsets: ['latin'], variable: '--font-shanti', weight: '400' });
 const Changa_one = Changa_One({ subsets: ['latin'], variable: '--font-Changa-one', weight: '400' });
@@ -29,10 +29,24 @@ export const viewport = {
 };
 
 
+const bodyFontVariables = [
+  inter.variable,
+  raleway.variable,
+  shanti.variable,
+  rubik.variable,
+  assistant.variable,
+  cantarell.variable,
+  montserrat.variable,
+  Changa_one.variable,
+].join(' ');
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr">
-      <body className={`${inter.variable} ${raleway.variable} ${shanti.variable} ${rubik.variable} ${assistant.variable} ${cantarell.variable} ${montserrat.variable} ${Changa_one.variable} bg-white w-full`}>
+    <html lang="fr" suppressHydrationWarning>
+      <body
+        className={`${bodyFontVariables} bg-white w-full`}
+        suppressHydrationWarning
+      >
         <main className='w-full'>
           <AccessibleMenu />
           <Navbar />

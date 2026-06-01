@@ -33,7 +33,7 @@ const ProjetHero = ({title, imgHero, idProject, hrefWebsite}) => {
                     </div>
                 </motion.div>
                 <motion.div ref={ref} initial={{opacity: 0, y: -100}} animate={isInView ? { opacity: 1, y: 0} : {}} transition={{ duration: 0.5, delay: 0.1 }} className="relative basis-full lg:basis-3/5 w-full h-full 3xl:h-[80%] flex items-center z-10 px-5 xs:px-0">
-                    <div className="w-90% mx-auto h-[350px] lg:h-[528px] max-h-full relative">
+                    <div className="w-90% mx-auto h-[350px] lg:h-[528px] 5xl:h-[750px] max-h-full relative">
                         <Image src={imgHero} className="w-full h-full object-contain" alt="" fill={true} quality={100} />
                     </div>
                 </motion.div>
