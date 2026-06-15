@@ -331,7 +331,7 @@ const MyWork = () => {
                             </li>
                             <li className="flex flex-col justify-center items-center">
                                 <span className="font-rubik font-bold">Année</span>
-                                <p className="font-shanti">2023</p>
+                                <p className="font-shanti">2025</p>
                             </li>
                         </ul>
                         <div className="mt-6">
@@ -402,7 +402,7 @@ const MyWork = () => {
                             </li>
                             <li className="flex flex-col justify-center items-center">
                                 <span className="font-rubik font-bold">Année</span>
-                                <p className="font-shanti">2025</p>
+                                <p className="font-shanti">2024</p>
                             </li>
                         </ul>
                         <div className="mt-6">
