@@ -1,42 +1,58 @@
 "use client";
-import { useState } from 'react';
-import Image from 'next/image';
-import Menu from "../ui/Menu"; // Assurez-vous d'importer le composant Menu
-import Link from 'next/link';
+import { useState } from "react";
+import Image from "next/image";
+import Menu from "../ui/Menu";
+import ThemeToggle from "../ui/ThemeToggle";
+import Link from "next/link";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    
+
     const toggleMenu = () => {
-        setIsOpen(!isOpen);
+        setIsOpen((prev) => !prev);
     };
-    
+
+    const closeMenu = () => {
+        setIsOpen(false);
+    };
+
     return (
-        <div className="fixed top-0 left-0 w-full z-50">
+        <header className="fixed top-0 left-0 w-full z-50">
             <div className="flex justify-between items-center p-4">
                 <div>
-                    <Link href="/">
-                        <Image src="/images/logo_pt.svg" priority alt="Logo" width={51} height={70} />
+                    <Link href="/" aria-label="Retour à l'accueil">
+                        <Image src="/images/logo_pt.svg" priority alt="" width={51} height={70} sizes="51px" />
                     </Link>
                 </div>
-                <div className="md:hidden" onClick={toggleMenu}>
-                    <div className={`relative w-8 h-8 flex flex-col justify-between items-center cursor-pointer`}>
-                        <span className={`block w-8 h-1 bg-black transform transition-transform duration-300 ease-in-out ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                        <span className={`block w-8 h-1 bg-black transform transition-transform duration-300 ease-in-out ${isOpen ? 'opacity-0' : ''}`}></span>
-                        <span className={`block w-8 h-1 bg-black transform transition-transform duration-300 ease-in-out ${isOpen ? '-rotate-45 -translate-y-5' : ''}`}></span>
-                    </div>
+                <div className="flex items-center gap-1 md:hidden">
+                    <ThemeToggle />
+                    <button
+                        type="button"
+                        className="p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blueprimary focus-visible:ring-offset-2 rounded"
+                        onClick={toggleMenu}
+                        aria-expanded={isOpen}
+                        aria-controls="mobile-menu"
+                        aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                    >
+                        <span className="relative w-8 h-8 flex flex-col justify-between items-center">
+                            <span className={`block w-8 h-1 bg-black dark:bg-whiteprimary transform transition-transform duration-300 ease-in-out ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+                            <span className={`block w-8 h-1 bg-black dark:bg-whiteprimary transform transition-transform duration-300 ease-in-out ${isOpen ? "opacity-0" : ""}`} />
+                            <span className={`block w-8 h-1 bg-black dark:bg-whiteprimary transform transition-transform duration-300 ease-in-out ${isOpen ? "-rotate-45 -translate-y-5" : ""}`} />
+                        </span>
+                    </button>
                 </div>
-                <div className="hidden md:flex">
+                <nav className="hidden md:flex items-center gap-2" aria-label="Navigation principale">
                     <Menu />
-                </div>
+                    <ThemeToggle />
+                </nav>
             </div>
             {isOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full">
-                    <Menu />
-                </div>
+                <nav id="mobile-menu" className="md:hidden absolute top-full left-0 w-full" aria-label="Navigation mobile">
+                    <Menu onNavigate={closeMenu} />
+                </nav>
             )}
-        </div>
+        </header>
     );
-}
+};
 
 export default Navbar;

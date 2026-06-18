@@ -1,52 +1,70 @@
 // app/layout.js
-import { Inter, Raleway, Shanti, Rubik, Changa_One, Assistant, Cantarell, Montserrat } from 'next/font/google';
+import { Raleway, Shanti, Rubik } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@component/components/layout/Navbar";
 import Footer from "@component/components/layout/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import AccessibleMenu from '@component/components/accessibility/AccessibleMenu';
+import { siteConfig } from "@component/lib/site";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const raleway = Raleway({ subsets: ['latin'], variable: '--font-raleway' });
 const shanti = Shanti({ subsets: ['latin'], variable: '--font-shanti', weight: '400' });
-const Changa_one = Changa_One({ subsets: ['latin'], variable: '--font-Changa-one', weight: '400' });
 const rubik = Rubik({ subsets: ['latin'], variable: '--font-rubik' });
-const assistant = Assistant({ subsets: ['latin'], variable: '--font-assistant' });
-const cantarell = Cantarell({ subsets: ['latin'], variable: '--font-cantarell', weight: '700' });
-const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
 
 export const metadata = {
-  title: "Valentin Kahn-Barberon - Portfolio",
-  description: "Portfolio Développeur Web front-end",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} — ${siteConfig.title}`,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  openGraph: {
+    title: `${siteConfig.name} — ${siteConfig.title}`,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} — ${siteConfig.title}`,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   viewportFit: 'cover',
 };
 
 
 const bodyFontVariables = [
-  inter.variable,
   raleway.variable,
   shanti.variable,
   rubik.variable,
-  assistant.variable,
-  cantarell.variable,
-  montserrat.variable,
-  Changa_one.variable,
 ].join(' ');
+
+// Applique le thème avant la peinture pour éviter tout flash (lit localStorage, sinon préférence système).
+const themeInitScript = `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
 
 export default function RootLayout({ children }) {
   return (
+    // suppressHydrationWarning requis : themeInitScript pose la classe `dark` sur <html> avant
+    // l'hydratation, ce qui rend l'attribut `class` côté client différent du rendu serveur.
     <html lang="fr" suppressHydrationWarning>
+      {/* suppressHydrationWarning : certaines extensions navigateur injectent des attributs sur
+          <body> (ex. cz-shortcut-listen) avant l'hydratation → mismatch bénin, à ignorer. */}
       <body
-        className={`${bodyFontVariables} bg-white w-full`}
+        className={`${bodyFontVariables} bg-surface text-blackprimary w-full`}
         suppressHydrationWarning
       >
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <main className='w-full'>
           <AccessibleMenu />
           <Navbar />
@@ -58,28 +76,28 @@ export default function RootLayout({ children }) {
               <defs>
                 {/* Blue */}
                 <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style={{ stopColor: "#2274A5", stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: "#F4F7F5", stopOpacity: 1 }} />
+                  <stop offset="0%" style={{ stopColor: "var(--blob-blue-1)", stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: "var(--blob-blue-2)", stopOpacity: 1 }} />
                 </linearGradient>
                 {/* Red */}
                 <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style={{ stopColor: "#E03B36", stopOpacity: 0.9 }} />
-                  <stop offset="60%" style={{ stopColor: "#ec8986", stopOpacity: 0.9}} />
-                  <stop offset="100%" style={{ stopColor: "#F4F7F5", stopOpacity: 0.9 }} />
+                  <stop offset="0%" style={{ stopColor: "var(--blob-red-1)", stopOpacity: 0.9 }} />
+                  <stop offset="60%" style={{ stopColor: "var(--blob-red-2)", stopOpacity: 0.9}} />
+                  <stop offset="100%" style={{ stopColor: "var(--blob-red-3)", stopOpacity: 0.9 }} />
                 </linearGradient>
                 {/* Blue to blue */}
                 <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style={{ stopColor: "#2274A5", stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: "#1e6894", stopOpacity: 1 }} />
+                  <stop offset="0%" style={{ stopColor: "var(--blob-bluedeep-1)", stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: "var(--blob-bluedeep-2)", stopOpacity: 1 }} />
                 </linearGradient>
                 {/* White */}
                 <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style={{ stopColor: "#F4F7F5", stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: "#f5f7f6", stopOpacity: 0.7 }} />
+                  <stop offset="0%" style={{ stopColor: "var(--blob-soft-1)", stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: "var(--blob-soft-2)", stopOpacity: 0.7 }} />
                 </linearGradient>
                 <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style={{ stopColor: "#232020", stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: "#F4F7F5", stopOpacity: 1 }} />
+                  <stop offset="0%" style={{ stopColor: "var(--blob-dark-1)", stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: "var(--blob-dark-2)", stopOpacity: 1 }} />
                 </linearGradient>
               </defs>
             </svg>

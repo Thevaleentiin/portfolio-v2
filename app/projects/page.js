@@ -1,8 +1,5 @@
+import { redirect } from "next/navigation";
 
-const Projects = () => {
-    return (
-        <div>Page Projects</div>
-    )
+export default function ProjectsPage() {
+    redirect("/#realisations");
 }
-
-export default Projects

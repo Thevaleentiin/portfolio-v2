@@ -2,48 +2,108 @@
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import CustomLink from "../ui/CustomLink";
+import { siteConfig } from "@component/lib/site";
 
 const About = () => {
-
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
 
     return (
-        <div id="a-propos" className="w-full bg-whiteprimary relative overflow-hidden">
-            {/* <div className="absolute -bottom-1/3 -left-5/12 w-1000 h-1000 rotate-90 bg-gradient-to-r from-blueprimary from-0% via-blueprimary/70 via-65% to-whiteprimary/75 to-100% rounded-full circle"></div>
-            <div className="absolute -bottom-87% left-7% w-1000 h-1000 rotate-90 bg-gradient-to-r from-redprimary from-0% via-redprimary/70 via-65% to-whiteprimary/75 to-100% rounded-full circle"></div>
-            <div className="absolute -bottom-8/12 -right-1/6 w-1000 h-1000 rotate-90 bg-gradient-to-r from-redprimary from-0% via-redprimary/70 via-65% to-whiteprimary/75 to-100% rounded-full circle"></div>
-            <div className="absolute -bottom-3/12 -right-4/12 w-750 h-750 -rotate-45 bg-gradient-to-r from-redprimary from-0% via-redprimary/70 via-65% to-whiteprimary/75 to-100% rounded-full circle"></div>
-            <div className="absolute -top-1/12 -left-7% w-64 h-64 bg-gradient-to-b -rotate-180 from-blackprimary from-0% via-blackprimary/50 via-60% to-blackprimary/45 to-100% rounded-full circle"></div> */}
+        <div id="a-propos" className="w-full bg-surface relative overflow-hidden">
             <div className="container pt-44 pb-44 5xl:px-48">
-                <h1 className="uppercase text-redprimary text-6xl lg:text-7xl font-raleway font-extrabold">à Propos</h1>
-                <motion.div ref={ref} initial={{opacity: 0, y: -50}} animate={isInView ? {opacity: 1, y: 0} : {}} transition={{ duration: 0.5}}  className="font-shanti w-10/12  xs:w-9/12 md:w-7/12 lg:w-7/12 mx-auto mt-14 leading-relaxed tracking-wide">
-                    <span className="text-redprimary font-rubik font-extrabold">Salut,</span>{" "}moi c’est Valentin 👋 — un <span className="text-blueprimary font-rubik font-bold">développeur front-end passionné</span> basé à Paris, diplômé de l’<span className="text-blueprimary font-rubik font-bold">IIM Digital School</span>.
-                    {" "}Je suis tombé dans le développement web <span className="text-blueprimary font-rubik font-bold">au lycée</span>, et depuis je n’ai jamais vraiment arrêté. J’ai eu l’occasion d’évoluer à travers plusieurs expériences, notamment de la <span className="text-blueprimary font-rubik font-bold">conception web</span> chez Paris France Parking au <span className="text-blueprimary font-rubik font-bold">développement front-end</span> chez ISOBAR.
-                    {" "}Curieux et autodidacte, j’aime apprendre en continu et explorer de nouvelles façons de concevoir des interfaces plus claires, plus efficaces et plus impactantes.
-                    {" "}Je travaille principalement avec <span className="text-blueprimary font-rubik font-bold">JavaScript/React</span>, <span className="text-blueprimary font-rubik font-bold">WordPress</span> et <span className="text-blueprimary font-rubik font-bold">PHP</span>, mais aussi sur l’intégration de newsletters, le print design et différents frameworks CSS.
-                    {" "}Chaque projet est pour moi une <span className="text-blueprimary font-rubik font-bold">aventure</span> : créer quelque chose d’utile, de concret, et surtout <span className="text-blueprimary font-rubik font-bold">adapté aux vrais besoins</span> des utilisateurs.
-                    {" "}Si vous voulez en savoir plus, vous pouvez découvrir mon parcours sur LinkedIn ou explorer mon portfolio 👀
+                <h2 className="uppercase text-redprimary text-6xl lg:text-7xl font-raleway font-extrabold">à Propos</h2>
+
+                <motion.div
+                    ref={ref}
+                    initial={{ opacity: 0, y: -50 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5 }}
+                    className="font-shanti w-10/12 xs:w-9/12 md:w-7/12 lg:w-7/12 mx-auto mt-14 leading-relaxed tracking-wide"
+                >
+                    <p>
+                        <span className="text-redprimary font-rubik font-extrabold">Salut,</span>{" "}
+                        moi c&apos;est Valentin — <span className="text-blueprimary font-rubik font-bold">développeur front-end</span> basé à Paris, diplômé de l&apos;<span className="text-blueprimary font-rubik font-bold">IIM Digital School</span>.
+                        {" "}Je conçois des interfaces avec <span className="text-blueprimary font-rubik font-bold">React</span>, <span className="text-blueprimary font-rubik font-bold">Next.js</span> et <span className="text-blueprimary font-rubik font-bold">WordPress</span>, en m&apos;appuyant sur une expérience terrain en agence (ISOBAR) et en freelance.
+                    </p>
+                    <p className="mt-4">
+                        Curieux et autodidacte, j&apos;aime transformer des besoins métier en interfaces claires, performantes et accessibles — ce portfolio est d&apos;ailleurs construit avec Next.js 16 et Framer Motion.
+                    </p>
                 </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.15 }}
+                    className="w-10/12 xs:w-9/12 md:w-7/12 lg:w-7/12 mx-auto mt-10"
+                >
+                    <h3 className="font-rubik font-bold text-blueprimary text-lg mb-4">Réalisations marquantes</h3>
+                    <ul className="font-shanti space-y-3 list-disc list-inside">
+                        {siteConfig.highlights.map((highlight) => (
+                            <li key={highlight}>{highlight}</li>
+                        ))}
+                    </ul>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.25 }}
+                    className="w-10/12 xs:w-9/12 md:w-7/12 lg:w-7/12 mx-auto mt-10 rounded-2xl border border-blueprimary/20 bg-blueprimary/5 p-6"
+                >
+                    <h3 className="font-rubik font-bold text-redprimary text-lg">En ce moment</h3>
+                    <p className="font-shanti mt-2">{siteConfig.availability}</p>
+                    <p className="font-shanti mt-1 text-blackprimary/70">{siteConfig.jobSearch}</p>
+                    <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                        <CustomLink
+                            href={siteConfig.cvPath}
+                            target="_blank"
+                            className="box-border border font-shanti rounded-xl !mt-0"
+                            bgWaveColor="bg-redprimary"
+                            textColor="text-redprimary"
+                            borderColor="before:border-redprimary"
+                            BgColor="bg-transparent"
+                            hoverTextColor="text-whiteprimary"
+                        >
+                            Télécharger mon CV
+                        </CustomLink>
+                        <CustomLink
+                            href={siteConfig.linkedin}
+                            target="_blank"
+                            className="box-border border font-shanti rounded-xl !mt-0"
+                            bgWaveColor="bg-blueprimary"
+                            textColor="text-blueprimary"
+                            borderColor="before:border-blueprimary"
+                            BgColor="bg-transparent"
+                            hoverTextColor="text-whiteprimary"
+                        >
+                            Voir mon LinkedIn
+                        </CustomLink>
+                    </div>
+                </motion.div>
+
                 <div className="container mt-10">
-                    <ul className="flex flex-row items-center justify-center gap-6">
+                    <ul className="flex flex-row items-center justify-center gap-6 flex-wrap" aria-label="Technologies maîtrisées">
                         <li>
-                            <Image src="/images/react_logo.png" alt="logo React Js" width={55} height={55} />
+                            <Image src="/images/react_logo.png" alt="React" width={55} height={55} sizes="55px" quality={75} />
                         </li>
                         <li>
-                            <Image src="/images/tailwindcss-logo.png" className="" alt="logo TailwindCSS" width={55} height={31} />
+                            <Image src="/images/tailwindcss-logo.png" alt="Tailwind CSS" width={55} height={31} sizes="55px" quality={75} />
                         </li>
                         <li>
-                            <Image src="/images/wordpress-logo.png" alt="logo Wordpress" width={55} height={55} />
+                            <Image src="/images/wordpress-logo.png" alt="WordPress" width={55} height={55} sizes="55px" quality={75} />
                         </li>
                         <li>
-                            <Image src="/images/git-logo.png" alt="logo Git" width={55} height={55} />
+                            <Image src="/images/git-logo.png" alt="Git" width={55} height={55} sizes="55px" quality={75} />
                         </li>
                     </ul>
+                    <p className="text-center font-shanti text-sm mt-4 text-blackprimary/60">
+                        Stack principal : React, Next.js, Tailwind CSS, WordPress, PHP
+                    </p>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default About;

@@ -1,5 +1,3 @@
-const { Assistant } = require('next/font/google');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -56,10 +54,12 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        redprimary: '#E03B36',
-        blueprimary: '#2274A5',
-        blackprimary: "#232020",
-        whiteprimary: "#F4F7F5",
+        redprimary: 'rgb(var(--redprimary) / <alpha-value>)',
+        blueprimary: 'rgb(var(--blueprimary) / <alpha-value>)',
+        blackprimary: 'rgb(var(--blackprimary) / <alpha-value>)',
+        whiteprimary: 'rgb(var(--whiteprimary) / <alpha-value>)',
+        surface: 'rgb(var(--surface) / <alpha-value>)',
+        'surface-2': 'rgb(var(--surface-2) / <alpha-value>)',
         blacksecondary: "#2B2A2A"
       },
       screens: {
@@ -81,7 +81,9 @@ module.exports = {
         changa_one: ['var(--font-Changa-one)', 'sans-serif'],
         assistant: ['var(--font-assistant)', 'sans-serif'],
         cantarell: ['var(--font-cantarell)', 'sans-serif'],
-        montserrat: ['var(--font-montserrat)', 'sans-serif']
+        montserrat: ['var(--font-montserrat)', 'sans-serif'],
+        'josefin-sans': ['var(--font-josefin-sans)', 'sans-serif'],
+        'open-sans': ['var(--font-open-sans)', 'sans-serif'],
       },
       fontSize:{
         '10xl': "12rem",

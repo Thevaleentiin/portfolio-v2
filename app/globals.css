@@ -4,6 +4,21 @@
 
   @layer base {
     :root {
+      /* Palette de marque — format "R G B" pour préserver les utilitaires d'opacité (ex. bg-blueprimary/10) */
+      --redprimary: 224 59 54;        /* #E03B36 — accent (fixe) */
+      --blueprimary: 34 116 165;      /* #2274A5 — accent (fixe) */
+      --whiteprimary: 244 247 245;    /* #F4F7F5 — clair / texte sur accent (fixe) */
+      --blackprimary: 35 32 32;       /* #232020 — texte & bordures (bascule en sombre) */
+      --surface: 255 255 255;         /* fond de base */
+      --surface-2: 244 247 245;       /* surface élevée (cartes, aside) */
+
+      /* Dégradés des blobs (clair) */
+      --blob-blue-1: #2274A5;  --blob-blue-2: #F4F7F5;
+      --blob-red-1: #E03B36;   --blob-red-2: #ec8986;  --blob-red-3: #F4F7F5;
+      --blob-bluedeep-1: #2274A5; --blob-bluedeep-2: #1e6894;
+      --blob-soft-1: #F4F7F5;  --blob-soft-2: #f5f7f6;
+      --blob-dark-1: #232020;  --blob-dark-2: #F4F7F5;
+
       --background: 0 0% 100%;
       --foreground: 222.2 84% 4.9%;
 
@@ -36,6 +51,18 @@
     }
 
     .dark {
+      /* Bascule sombre — accents (rouge/bleu) conservés, blackprimary devient clair, surfaces sombres */
+      --blackprimary: 232 234 237;    /* texte clair sur fond sombre */
+      --surface: 21 23 28;            /* #15171C fond de base */
+      --surface-2: 30 33 39;          /* #1E2127 cartes/aside */
+
+      /* Dégradés des blobs (sombre, assombris/désaturés pour un halo ambiant) */
+      --blob-blue-1: #173a52;  --blob-blue-2: #1b1e24;
+      --blob-red-1: #5a1a16;   --blob-red-2: #3a1714;  --blob-red-3: #1b1e24;
+      --blob-bluedeep-1: #1d4a68; --blob-bluedeep-2: #142f43;
+      --blob-soft-1: #20242b;  --blob-soft-2: #181b21;
+      --blob-dark-1: #2b2f37;  --blob-dark-2: #15171c;
+
       --background: 222.2 84% 4.9%;
       --foreground: 210 40% 98%;
 
@@ -87,6 +114,20 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* body {
   padding: env(safe-area-inset);
 
@@ -106,6 +147,13 @@ html {
 /*thumb pressed*/
 ::-webkit-scrollbar-thumb:active {
   background: #1e6894;
+}
+/* Scrollbar — sombre */
+.dark ::-webkit-scrollbar-track {
+  background: rgb(21, 23, 28);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #2274A5;
 }
 
 
@@ -213,28 +261,20 @@ html {
 
   /* Dynamic border colors */
   .before\\:border-blueprimary:before {
-    border-color: var(--color-blueprimary);
+    border-color: rgb(var(--blueprimary));
   }
 
   .before\\:border-redprimary:before {
-    border-color: var(--color-redprimary);
+    border-color: rgb(var(--redprimary));
   }
 
   .before\\:border-whiteprimary:before {
-    border-color: var(--color-whiteprimary);
-  }
-
-  .before\\:border-yellowprimary:before {
-    border-color: var(--color-yellowprimary);
-  }
-
-  .before\\:border-greenprimary:before {
-    border-color: var(--color-greenprimary);
+    border-color: rgb(var(--whiteprimary));
   }
 
   /* Ensure hoverTextColor has priority */
   button.blob-btn .text-blackprimary {
-    color: var(--color-blackprimary);
+    color: rgb(var(--blackprimary));
   }
 
 }

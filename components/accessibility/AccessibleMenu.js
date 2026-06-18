@@ -40,7 +40,7 @@ const AccessibleMenu = () => {
             id="accessible-menu"
             role="navigation"
             aria-label="Menu d'accessibilité"
-            className={`${menuDisplayed ? 'block' : 'hidden'} absolute top-0 left-0 bg-white border border-gray-300 p-2 z-[60]`}
+            className={`${menuDisplayed ? 'block' : 'hidden'} absolute top-0 left-0 bg-surface-2 border border-gray-300 dark:border-gray-600 p-2 z-[60]`}
             ref={menuRef}
         >
             <div className="flex flex-row gap-2 z-[60]">

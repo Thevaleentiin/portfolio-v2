@@ -1,7 +1,9 @@
 "use client";
 import ScrollBtn from "../ui/ScrollBtn";
 import BlobCircle from "../BlobCircle";
+import CustomLink from "../ui/CustomLink";
 import { motion } from "framer-motion";
+import { siteConfig } from "@component/lib/site";
 
 const HeroSection = () => {
     return (
@@ -11,26 +13,65 @@ const HeroSection = () => {
             <BlobCircle gradientId="grad2" className="absolute -bottom-7/12 hidden lg:block -right-1/6 4xl:-right-3/24 -z-20 w-1000 h-1000 4xl:w-1200 4xl:h-1200 rotate-90" />
             <BlobCircle gradientId="grad2" className="absolute -top-18/24 xxs:-top-6/12 -right-21/24 xs:-top-6/12 xs:-right-7/12 sm:-top-4/12 sm:-right-7/12  md:-top-3/12 md:-right-6/12 lg:-top-3/12 lg:-right-2/12 -z-30  w-750 h-750 md:w-750 md:h-750 lg:w-1000 lg:h-1000 5xl:w-1200 5xl:h-1200 hidden xxs:block rotate-45" />
             <BlobCircle gradientId="grad2" className="absolute -bottom-1/12 hidden lg:block -right-30 4xl:-right-5/24 z-0 w-750 h-750 5xl:w-950 5xl:h-950 rotate-45" />
-            <div className="flex flex-col z-50">
-                <motion.h1
+            <div className="flex flex-col z-50 items-center px-4">
+                <motion.div
                     className="uppercase font-raleway font-extrabold flex flex-col justify-start"
                     initial={{ opacity: 0, y: -50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                 >
-                    <div className="text-redprimary text-base sm:text-base md:text-xl lg:text-4xl flex flex-row justify-evenly items-center">
-                        <div className="basis-9/12 sm:basis-9/12 md:basis-8/12 lg:basis-7/12">Hello je m'appelle</div>
-                        <div className="basis-3/12 sm:basis-3/12 md:basis-4/12 lg:basis-5/12 h-1 w-full bg-blueprimary relative flex items-center">
-                            <div className="w-2 h-2 md:w-4 md:h-4 rounded-full absolute right-0 bg-redprimary"></div>
-                        </div>
+                    <h1 className="flex flex-col justify-start">
+                        <span className="text-redprimary text-base sm:text-base md:text-xl lg:text-4xl flex flex-row justify-evenly items-center">
+                            <span className="basis-9/12 sm:basis-9/12 md:basis-8/12 lg:basis-7/12">Hello je m&apos;appelle</span>
+                            <span className="basis-3/12 sm:basis-3/12 md:basis-4/12 lg:basis-5/12 h-1 w-full bg-blueprimary relative flex items-center">
+                                <span className="w-2 h-2 md:w-4 md:h-4 rounded-full absolute right-0 bg-redprimary" aria-hidden="true" />
+                            </span>
+                        </span>
+                        <span className="text-blackprimary text-5xl sm:text-5xl md:text-7xl lg:text-9xl block">Valentin</span>
+                        <span className="uppercase self-end font-extrabold sm:text-lg md:text-xl lg:text-2xl block">
+                            Développeur
+                            <span className="text-blueprimary font-extrabold block">Front-End</span>
+                        </span>
+                    </h1>
+                </motion.div>
+                <motion.p
+                    className="mt-6 text-center font-shanti text-sm sm:text-base md:text-lg text-blackprimary/80 normal-case tracking-wide"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                >
+                    React · Next.js · WordPress
+                </motion.p>
+                <motion.div
+                    className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                    <span className="inline-flex items-center gap-2 rounded-full bg-blueprimary/10 px-4 py-2 text-xs sm:text-sm font-rubik font-bold text-blueprimary normal-case">
+                        <span className="h-2 w-2 rounded-full bg-green-500" aria-hidden="true" />
+                        {siteConfig.availability}
+                    </span>
+                    <div className="flex flex-row gap-3 normal-case">
+                        <CustomLink
+                            href={siteConfig.cvPath}
+                            target="_blank"
+                            wrapperClassName="mt-0"
+                            className="box-border border font-shanti rounded-xl !px-8 !py-3 text-sm"
+                            bgWaveColor="bg-blueprimary"
+                            textColor="text-blueprimary"
+                            borderColor="before:border-blueprimary"
+                            BgColor="bg-transparent"
+                            hoverTextColor="text-whiteprimary"
+                        >
+                            Télécharger mon CV
+                        </CustomLink>
                     </div>
-                    <p className="text-blackprimary text-5xl sm:text-5xl md:text-7xl lg:text-9xl">Valentin</p>
-                    <p className="uppercase self-end font-extrabold sm:text-lg md:text-xl lg:text-2xl">Développeur<span className="text-blueprimary font-extrabold block">Front-End</span></p>
-                </motion.h1>
+                </motion.div>
             </div>
             <ScrollBtn />
         </div>
     );
-}
+};
 
 export default HeroSection;
