@@ -23,7 +23,7 @@ const Footer = () => {
                             className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blueprimary focus-visible:ring-offset-2 rounded"
                             aria-label="Profil GitHub de Valentin"
                         >
-                            <Image src="/images/github-logo.png" className="w-8" alt="" width={32} height={32} sizes="32px" />
+                            <Image src="/images/github-logo.png" className="w-8 dark:invert" alt="" width={32} height={32} sizes="32px" />
                         </Link>
                     </li>
                     <li>
